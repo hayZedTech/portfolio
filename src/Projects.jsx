@@ -9,7 +9,7 @@ import cbt_image from "./Images/cbt_image.png";
 import chat_img from "./Images/chat.jpg";
 import ecommerce from "./Images/ecommerce.png";
 import blog from "./Images/blog.png";
-import stripe_dashboard from "./Images/stripe_dashboard.png"; 
+import stripe_dashboard from "./Images/stripe_dashboard.png";    
 import vibestream from "./Images/vibestream.png";
 import expenses from "./Images/expenses.png"; 
 import award from "./Images/award.png"; 
