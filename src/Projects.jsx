@@ -106,12 +106,12 @@ export const Projects = () => {
     {
       id: 3,
       category: "web",
-      title: "Computer Based Testing (App 2)",
-      desc: "A computer-based testing (CBT) platform designed for conducting online exams. Built with PHP and PostgreSQL for backend management, JavaScript and jQuery for interactive features, and Bootstrap for layout.",
+      title: "Computer Based Testing (CBT) Portal",
+      desc: "A full-featured Computer Based Testing (CBT) platform built with PHP and Supabase PostgreSQL. Features include secure candidate authentication, server-anchored anti-cheat countdown timers, question navigation matrix, and an automated grading engine supporting official WAEC, NECO, and JAMB standards across 18 subjects with instant score analytics and step-by-step answer explanations.",
       img: cbt_image,
       demoLink: "https://hayzed-exam.onrender.com",
       githubLink: "https://github.com/hayZedTech/hayzed-exam",
-      languages: ["PHP", "PostgreSQL", "JavaScript", "JQuery", "Bootstrap", "CSS"]
+      languages: ["PHP", "PostgreSQL", "Supabase", "JavaScript", "JQuery", "Bootstrap", "Docker", "REST API"]
     },
     {
       id: 4,
