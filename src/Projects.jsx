@@ -119,7 +119,7 @@ export const Projects = () => {
       title: "E-Commerce Digital Storefront",
       desc: "A fully functional ecommerce website where users can browse products, add to cart, and purchase online. Built with PHP and MySQL for backend, Bootstrap and jQuery for frontend interactivity.",
       img: ecommerce,
-      demoLink: "https://jimmarof.com",
+      demoLink: "https://qidaf.com",
       githubLink: "https://github.com/hayZedTech",
       languages: ["PHP", "MySQL", "JavaScript", "JQuery", "Bootstrap"]
     },
@@ -129,7 +129,7 @@ export const Projects = () => {
       title: "Dynamic Content Blog Platform",
       desc: "A dynamic blog platform allowing users to read and interact with published articles. Developed using PHP and MySQL for backend content management, Bootstrap for design, and jQuery + JavaScript for interactivity.",
       img: blog,
-      demoLink: "https://jimmarof.com/jimmarof_blog/index.php",
+      demoLink: "https://qidaf.com/qidaf_blog/index.php",
       githubLink: "https://github.com/hayZedTech",
       languages: ["PHP", "MySQL", "JavaScript", "JQuery", "Bootstrap"]
     },
