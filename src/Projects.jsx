@@ -8,7 +8,6 @@ import "./css/mystyle.css";
 import cbt_image from "./Images/cbt_image.png";
 import chat_img from "./Images/chat.jpg";
 import ecommerce from "./Images/ecommerce.png";
-import exam002 from "./Images/exam002.png";
 import blog from "./Images/blog.png";
 import stripe_dashboard from "./Images/stripe_dashboard.png"; 
 import vibestream from "./Images/vibestream.png";
@@ -107,16 +106,6 @@ export const Projects = () => {
     {
       id: 3,
       category: "web",
-      title: "Exam Practice Platform (App 1)",
-      desc: "An interactive exam practice platform where students can take subject-based quizzes. Built with React for a smooth user experience, Bootstrap for design, and JavaScript for quiz logic.",
-      img: exam002,
-      demoLink: "/Biology01",
-      githubLink: "https://github.com/hayZedTech",
-      languages: ["React", "JavaScript", "Bootstrap", "HTML", "CSS"]
-    },
-    {
-      id: 4,
-      category: "web",
       title: "Computer Based Testing (App 2)",
       desc: "A computer-based testing (CBT) platform designed for conducting online exams. Built with PHP and PostgreSQL for backend management, JavaScript and jQuery for interactive features, and Bootstrap for layout.",
       img: cbt_image,
@@ -125,7 +114,7 @@ export const Projects = () => {
       languages: ["PHP", "PostgreSQL", "JavaScript", "JQuery", "Bootstrap", "CSS"]
     },
     {
-      id: 5,
+      id: 4,
       category: "web",
       title: "E-Commerce Digital Storefront",
       desc: "A fully functional ecommerce website where users can browse products, add to cart, and purchase online. Built with PHP and MySQL for backend, Bootstrap and jQuery for frontend interactivity.",
@@ -135,7 +124,7 @@ export const Projects = () => {
       languages: ["PHP", "MySQL", "JavaScript", "JQuery", "Bootstrap"]
     },
     {
-      id: 6,
+      id: 5,
       category: "web",
       title: "Dynamic Content Blog Platform",
       desc: "A dynamic blog platform allowing users to read and interact with published articles. Developed using PHP and MySQL for backend content management, Bootstrap for design, and jQuery + JavaScript for interactivity.",
@@ -145,7 +134,7 @@ export const Projects = () => {
       languages: ["PHP", "MySQL", "JavaScript", "JQuery", "Bootstrap"]
     },
     {
-      id: 7,
+      id: 6,
       category: "web",
       title: "Multi-Tenant SaaS Billing System",
       desc: "Developed a full-featured multi-tenant SaaS dashboard with subscription management and Stripe integration. Implements role-based access control, real-time project management, and secure API endpoints.",
@@ -155,7 +144,7 @@ export const Projects = () => {
       languages: ["React", "Node.js", "Express.js", "PostgreSQL", "Stripe API", "Bootstrap"]
     },
     {
-      id: 8,
+      id: 7,
       category: "web",
       title: "Realtime Vibestream App",
       desc: "A real-time social media platform with private and group chat, instant notifications, and conversation management. Integrated Socket.io for real-time messaging and MongoDB for scalable data storage.",
@@ -165,7 +154,7 @@ export const Projects = () => {
       languages: ["React", "Node.js", "Express.js", "MongoDB", "Socket.io", "Bootstrap"]
     },
     {
-      id: 9,
+      id: 8,
       category: "web",
       title: "Elite Award Nomination System",
       desc: "A sophisticated real-time voting platform featuring a secure administrative dashboard, live result tallying with automated tie-detection, and a high-fidelity 'glowing' light UI designed for prestigious ceremonies.",
