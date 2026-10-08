@@ -18,6 +18,8 @@ import personal_inventory from "./Images/personal_inventory.png";
 import hayzed_blog_api from "./Images/blog_django_api.png"; 
 import multitenant_saas from "./Images/multitenant-saas.png"; 
 import tradetalk from "./Images/tradetalk.png";
+import stephotec_api_docs from "./Images/stephotec_api_docs.jpg";
+import stephotec_portal from "./Images/stephotec_portal.png";
 
 export const Projects = () => {
   const [showModal, setShowModal] = useState(false);
@@ -82,6 +84,18 @@ export const Projects = () => {
       docsLink: "https://multitenant-saas-byx3.onrender.com/api/v1/docs/",
       githubLink: "https://github.com/hayZedTech/multitenant-saas",
       languages: ["Python", "Django", "DRF", "PostgreSQL", "Celery", "Redis", "JWT Auth", "drf-spectacular"]
+    },
+    {
+      id: 15,
+      category: "backend",
+      title: "Stephotec Student Management API",
+      desc: "An enterprise-grade education management backend built using Django REST Framework and PostgreSQL. Features multi-course student enrollment pipelines, per-course auto-generated matriculation IDs, course history tracking, JWT authentication, and automated OpenAPI 3.0 specs. Includes standalone, read-only Redoc interactive documentation displaying 50+ endpoints, schemas, and request/response models in a Stripe-style 3-column layout without live database exposure.",
+      img: stephotec_api_docs,
+      demoLink: null,
+      docsLink: "/stephotec-api-docs.html",
+      docsLabel: "📖 Redoc OpenAPI Docs",
+      githubLink: "https://github.com/hayZedTech/stephotec_backend",
+      languages: ["Python", "Django", "DRF", "PostgreSQL", "JWT Auth", "drf-spectacular", "OpenAPI 3.0", "Redoc"]
     },
     {
       id: 1,
@@ -162,6 +176,18 @@ export const Projects = () => {
       demoLink: "https://awards-theta-eight.vercel.app/",
       githubLink: "https://github.com/hayZedTech/awards",
       languages: ["React", "Supabase", "Tailwind CSS", "Lucide React", "SweetAlert2"]
+    },
+    {
+      id: 9,
+      category: "web",
+      title: "Stephotec Student & Institution Portal",
+      desc: "An enterprise-grade education management portal built with Next.js 16, React 19, Material-UI, and Tailwind CSS, powered by a high-performance Python & Django REST Framework backend with PostgreSQL. Features dynamic role-based dashboards (Admin & Student), advanced data grids for student records, interactive weekly timetable scheduling, course progress tracking, automated ID card & certificate generation (PDF/canvas), quiz player engine, and RESTful API integration with JWT session security.",
+      img: stephotec_portal,
+      demoLink: "https://stephotec-portal.vercel.app/",
+      docsLink: "/stephotec-api-docs.html",
+      docsLabel: "📖 API Specification",
+      githubLink: "https://github.com/hayZedTech/stephotec-portal",
+      languages: ["Next.js", "React", "Django (Backend)", "DRF", "PostgreSQL", "Material-UI", "Tailwind CSS", "Axios"]
     }
   ];
 
@@ -333,7 +359,7 @@ export const Projects = () => {
                   rel="noopener noreferrer"
                   className="btn btn-outline-dark flex-grow-1 py-2.5 fw-bold rounded-3 shadow-sm transition-all text-dark"
                 >
-                  📄 Swagger API Docs
+                  {selectedProject.docsLabel || "📄 Swagger API Docs"}
                 </a>
               )}
               {selectedProject.githubLink && (
