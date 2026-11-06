@@ -200,7 +200,14 @@ export const Projects = () => {
 
   return (
     <>
-      <section className=" py-5 min-vh-100" style={{backgroundColor:"#fff"}}>
+      <section 
+        id="projects" 
+        className="py-5 min-vh-100 position-relative" 
+        style={{
+          background: "linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%)",
+          borderTop: "1px solid #e2e8f0"
+        }}
+      >
         <div className="container">
           {/* Section Header */}
           <div className="text-center mb-5">
@@ -219,11 +226,15 @@ export const Projects = () => {
             {categories.map((tab) => (
               <button
                 key={tab.id}
-                className={`btn px-4 py-2 rounded-pill fw-bold transition-all shadow-sm ${
+                className={`btn px-4 py-2 rounded-pill fw-bold transition-all ${
                   activeTab === tab.id 
-                    ? "btn-info text-dark shadow animate-pulse" 
-                    : "btn-outline-secondary bg-white text-secondary"
+                    ? "btn-info text-dark shadow-sm" 
+                    : "btn-outline-secondary bg-white text-secondary border"
                 }`}
+                style={{
+                  borderColor: activeTab === tab.id ? "transparent" : "#e2e8f0",
+                  fontSize: "0.92rem"
+                }}
                 onClick={() => setActiveTab(tab.id)}
               >
                 {tab.label}
@@ -238,33 +249,39 @@ export const Projects = () => {
                 <div key={project.id} className="col-12 col-md-6 col-lg-4 d-flex">
                   <motion.div
                     layout
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.3 }}
-                    className="card border-0 w-100 h-100 flex-column overflow-hidden bg-white custom-project-card"
+                    className="card border w-100 h-100 flex-column overflow-hidden bg-white custom-project-card"
                     style={{ 
                       borderRadius: "16px", 
-                      cursor: "pointer",
-                      boxShadow: "0 10px 20px 5px rgba(0,0,0,0.4), 0 4px 16px -8px rgba(0,0,0,0.4)"
+                      borderColor: "#e2e8f0",
+                      boxShadow: "0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04)"
                     }}
-                    onClick={() => openModal(project)}
                     whileHover={{ 
-                      y: -8, 
-                      boxShadow: "0 20px 35px -10px rgba(0,0,0,0.18), 0 6px 20px -6px rgba(0,0,0,0.1)",
+                      y: -6, 
+                      boxShadow: "0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.04)",
+                      borderColor: "#cbd5e1",
                       transition: { duration: 0.2 } 
                     }}
                   >
                     {/* Project Image Frame Layout */}
-                    <div className="position-relative overflow-hidden" style={{ height: "200px" }}>
+                    <div 
+                      className="position-relative overflow-hidden" 
+                      style={{ height: "205px", cursor: "pointer" }}
+                      onClick={() => openModal(project)}
+                    >
                       <img
                         src={project.img}
                         alt={project.title}
                         className="w-100 h-100 object-cover"
-                        style={{ objectFit: "cover" }}
+                        style={{ objectFit: "cover", transition: "transform 0.4s ease" }}
+                        onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.04)"; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
                       />
                       <div className="position-absolute top-0 end-0 m-3">
-                        <span className="badge bg-dark bg-opacity-75 backdrop-blur px-3 py-2 rounded-pill small">
+                        <span className="badge bg-dark bg-opacity-75 backdrop-blur px-3 py-1.5 rounded-pill small fw-semibold">
                           ID: #{project.id}
                         </span>
                       </div>
@@ -272,7 +289,11 @@ export const Projects = () => {
 
                     {/* Card Description Data Segment */}
                     <div className="card-body p-4 d-flex flex-column flex-grow-1">
-                      <h5 className="card-title text-dark fw-bold mb-2 text-truncate-2">
+                      <h5 
+                        className="card-title text-dark fw-bold mb-2 text-truncate-2"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => openModal(project)}
+                      >
                         {project.title}
                       </h5>
                       <p className="card-text text-secondary small flex-grow-1 mb-4 line-clamp-3">
@@ -284,20 +305,151 @@ export const Projects = () => {
                       {/* Chip Micro-Tags Mapping Component */}
                       <div className="d-flex flex-wrap gap-1 mb-3 overflow-hidden" style={{ maxHeight: "64px" }}>
                         {project.languages.slice(0, 4).map((lang, idx) => (
-                          <span key={idx} className="badge bg-light text-secondary border px-2 py-1 small">
+                          <span key={idx} className="badge bg-light text-secondary border px-2 py-1 small fw-medium" style={{ borderColor: "#e2e8f0" }}>
                             {lang}
                           </span>
                         ))}
                         {project.languages.length > 4 && (
-                          <span className="badge bg-light text-info border px-2 py-1 small fw-bold">
+                          <span className="badge bg-info bg-opacity-10 text-primary border border-info border-opacity-25 px-2 py-1 small fw-bold">
                             +{project.languages.length - 4}
                           </span>
                         )}
                       </div>
 
-                      <div className="mt-auto pt-3 border-top d-flex align-items-center justify-content-between text-info fw-bold card-footer-action">
-                        <span>Inspect System Specs</span>
-                        <i className="bi bi-arrow-right-short fs-4"></i>
+                      {/* Direct Action Buttons matching requested design */}
+                      <div className="mt-auto pt-3 border-top d-flex align-items-center gap-2 flex-wrap">
+                        {project.demoLink && (
+                          <a
+                            href={project.demoLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="btn btn-sm text-white fw-semibold d-inline-flex align-items-center text-decoration-none shadow-sm"
+                            style={{
+                              backgroundColor: "#0284c7",
+                              borderRadius: "8px",
+                              padding: "7px 14px",
+                              fontSize: "0.85rem",
+                              boxShadow: "0 4px 14px 0 rgba(2, 132, 199, 0.35)",
+                              border: "none",
+                              transition: "all 0.2s ease"
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = "#0369a1";
+                              e.currentTarget.style.transform = "translateY(-1px)";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = "#0284c7";
+                              e.currentTarget.style.transform = "translateY(0)";
+                            }}
+                            title="Open Live Application"
+                          >
+                            <span>Live Demo</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="ms-1.5">
+                              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                              <polyline points="15 3 21 3 21 9"></polyline>
+                              <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                          </a>
+                        )}
+
+                        {!project.demoLink && project.docsLink && (
+                          <a
+                            href={project.docsLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="btn btn-sm text-white fw-semibold d-inline-flex align-items-center text-decoration-none shadow-sm"
+                            style={{
+                              backgroundColor: "#0284c7",
+                              borderRadius: "8px",
+                              padding: "7px 14px",
+                              fontSize: "0.85rem",
+                              boxShadow: "0 4px 14px 0 rgba(2, 132, 199, 0.35)",
+                              border: "none",
+                              transition: "all 0.2s ease"
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = "#0369a1";
+                              e.currentTarget.style.transform = "translateY(-1px)";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = "#0284c7";
+                              e.currentTarget.style.transform = "translateY(0)";
+                            }}
+                            title="View Interactive API Documentation"
+                          >
+                            <span>API Docs</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="ms-1.5">
+                              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                              <polyline points="15 3 21 3 21 9"></polyline>
+                              <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                          </a>
+                        )}
+
+                        {project.githubLink && (
+                          <a
+                            href={project.githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="btn btn-sm text-white fw-semibold d-inline-flex align-items-center text-decoration-none shadow-sm"
+                            style={{
+                              backgroundColor: "#0f172a",
+                              borderRadius: "8px",
+                              padding: "7px 14px",
+                              fontSize: "0.85rem",
+                              border: "none",
+                              transition: "all 0.2s ease"
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = "#1e293b";
+                              e.currentTarget.style.transform = "translateY(-1px)";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = "#0f172a";
+                              e.currentTarget.style.transform = "translateY(0)";
+                            }}
+                            title="View GitHub Repository"
+                          >
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="me-1.5">
+                              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                            <span>Code</span>
+                          </a>
+                        )}
+
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openModal(project);
+                          }}
+                          className="btn btn-sm fw-semibold d-inline-flex align-items-center justify-content-center"
+                          style={{
+                            backgroundColor: "#ffffff",
+                            color: "#334155",
+                            border: "1.5px solid #cbd5e1",
+                            borderRadius: "8px",
+                            padding: "6px 14px",
+                            fontSize: "0.85rem",
+                            transition: "all 0.2s ease"
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = "#f8fafc";
+                            e.currentTarget.style.borderColor = "#94a3b8";
+                            e.currentTarget.style.transform = "translateY(-1px)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = "#ffffff";
+                            e.currentTarget.style.borderColor = "#cbd5e1";
+                            e.currentTarget.style.transform = "translateY(0)";
+                          }}
+                          title="View System Details and Architecture"
+                        >
+                          <span>Details</span>
+                        </button>
                       </div>
                     </div>
                   </motion.div>
